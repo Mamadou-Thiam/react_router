@@ -13,7 +13,7 @@ const MoviesCard = ({title,description,posterUrl,rating}) => {
         <h5>{description}</h5>
         <h5>{rating}</h5>
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">MOVIES</Button>
       </Card.Body>
     </Card>
     );
