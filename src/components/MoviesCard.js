@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button,Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button,Card } from 'react-bootstrap';
+
 
 
 const MoviesCard = ({title,description,posterUrl,rating}) => {
@@ -10,12 +11,13 @@ const MoviesCard = ({title,description,posterUrl,rating}) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>
-        <h5>{description}</h5>
+        <h5 className='titleStyle'>{description}</h5>
         <h5>{rating}</h5>
         </Card.Text>
         <Button variant="primary">MOVIES</Button>
       </Card.Body>
     </Card>
+    
     );
 };
 

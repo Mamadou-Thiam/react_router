@@ -4,9 +4,13 @@ import { Button, Form, Nav, Container, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import Film from './AddFilm';
+import { Link } from 'react-router-dom';
+
+
 
 const MoviesList = () => {
   // pour l'ajout d'un nouveau film
+
 
   const [nouveauFilm, setNouveauFilm] = useState(Film);
 
@@ -25,8 +29,8 @@ const MoviesList = () => {
   // filtrer avec .filter
   const [searchitem, setsearchitem] = useState(movies);
 
-  const name = (e) => {
-    const search = e.target.value.toLowerCase();
+  const name = (argument) => {
+    const search = argument.target.value.toLowerCase();
     const filtered1 = movies.filter((film) => {
       return film.title.toLowerCase().includes(search) || film.rating.toString().toLowerCase().includes(search);
     });
@@ -35,38 +39,49 @@ const MoviesList = () => {
 
   return (
     <>
+      
+      <div>
       <Navbar expand="lg" className="bg-body-tertiary">
-        <Container fluid>
-          <Navbar.Brand href="#">Movies</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: '100px' }}
-              navbarScroll
-            >
-              {/* ... */}
-            </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-                // configuration de l'input par la methode de filtrage
-                onChange={name}
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <Container fluid>
+        <Navbar.Brand href="#">MOVIES</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+         
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              onChange={name}
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+      </div>
+      
+      
       {/* mapper */}
-      <div className="cardFlex">
-        {searchitem.map((movie) => (
-          <MoviesCard {...movie} />
+     
+     <div className="cardFlexs">
+        {searchitem.map((descr) => (
+          <div key={descr.id} >
+            {/*lien qui permet de regarder le trailer du film*/}
+            <Link to={`descr/${descr.id}`} > 
+          <MoviesCard {...descr} />
+          </Link>
+           </div>
         ))}
       </div>
+      
 
       <div className=''>
         <br /><br /><br /><br /><br />
